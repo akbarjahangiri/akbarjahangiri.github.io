@@ -209,6 +209,10 @@
 
 // Starships combat: free-for-all with variants, separation, specials, and CTA popup
 (function(){
+  var path = (location.pathname || '').toLowerCase();
+  var onAbout = path.endsWith('/about.html') || path.endsWith('about.html');
+  if(onAbout) return;
+
   var layer = document.querySelector('.starship-layer');
   if(!layer){
     layer = document.createElement('div');
