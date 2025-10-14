@@ -86,8 +86,8 @@ a:hover { color: #00ffaa; }
 }
 
 .card-container:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 26px rgba(0, 255, 170, 0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(0, 255, 170, 0.12);
 }
 
 /* Lightbox base styles */
@@ -137,309 +137,170 @@ a:hover { color: #00ffaa; }
   cursor: zoom-in;
 }
 
-/* Cosmic planets scene */
-.cosmic-scene {
-  position: relative;
-  width: 100%;
-  height: 260px;
-  margin: 10px 0 30px 0;
-  overflow: visible;
+/* Fix text readability on works page */
+.card-container {
+  background: rgba(6, 12, 20, 0.9) !important;
+  color: #c8fff0 !important;
+  border: 1px solid rgba(0,255,170,0.2);
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
 }
 
-.cosmic-scene .planet {
-  position: absolute;
-  border-radius: 50%;
-  box-shadow: 0 0 24px rgba(0,255,170,0.15), 0 0 48px rgba(0,120,255,0.08);
-  will-change: transform;
-  animation: planet-float 6s ease-in-out infinite;
+.card-container h3 {
+  color: #00ffaa !important;
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
-/* Individual planets */
-.planet--turquoise {
-  width: 120px; height: 120px;
-  background: radial-gradient(circle at 35% 35%, #32ffd6, #0d2a36 70%);
-  left: 4%; top: 40px;
-}
-.planet--violet {
-  width: 80px; height: 80px;
-  background: radial-gradient(circle at 35% 30%, #a78bfa, #2c1b47 70%);
-  left: 24%; top: 10px;
-  animation-delay: 1.2s;
-}
-.planet--gold {
-  width: 140px; height: 140px;
-  background: radial-gradient(circle at 40% 35%, #ffd166, #4d3203 70%);
-  right: 10%; top: 30px;
-  animation-delay: 0.6s;
-}
-.planet--blue {
-  width: 60px; height: 60px;
-  background: radial-gradient(circle at 35% 35%, #6ee7ff, #0d2342 70%);
-  right: 28%; top: 120px;
-  animation-delay: 2s;
+.card-container h4 {
+  color: #6ee7ff !important;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
-/* Rings */
-.planet.has-ring::after {
-  content: "";
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%) rotate(18deg);
-  width: 160%; height: 40%;
-  border: 2px solid rgba(255,255,255,0.25);
-  border-left-color: transparent;
-  border-right-color: transparent;
-  border-radius: 50%;
-  filter: blur(0.3px);
+.card-container p {
+  color: #c8fff0 !important;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 15px;
 }
 
-/* Star sparkles around scene */
-.cosmic-scene::before, .cosmic-scene::after {
-  content: "";
-  position: absolute;
-  inset: -20px -10px;
-  background-image:
-    radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.6) 50%, transparent 51%),
-    radial-gradient(2px 2px at 80% 30%, rgba(255,255,255,0.5) 50%, transparent 51%),
-    radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,0.5) 50%, transparent 51%),
-    radial-gradient(1px 1px at 60% 50%, rgba(255,255,255,0.5) 50%, transparent 51%);
-  background-repeat: no-repeat;
-  pointer-events: none;
+.card-container .btn {
+  background: linear-gradient(45deg, #00ffaa, #6ee7ff);
+  color: #000 !important;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
-@keyframes planet-float {
-  0%, 100% { transform: translateY(0) translateZ(0); }
-  50% { transform: translateY(-8px) translateZ(0); }
+.card-container .btn:hover {
+  background: linear-gradient(45deg, #6ee7ff, #00ffaa);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,255,170,0.3);
 }
 
-/* Floating game characters (background) */
-.game-floaters {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
+.card-container-lg {
+  background: rgba(6, 12, 20, 0.95) !important;
+  border: 1px solid rgba(0,255,170,0.3);
+  box-shadow: 0 4px 16px rgba(0,255,170,0.1);
 }
 
-.game-floaters .floater {
-  position: absolute;
-  will-change: transform, opacity;
-  opacity: 0.85;
-  animation: floater-drift linear forwards;
-  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35));
-}
-
-@keyframes floater-drift {
-  0% { transform: translateY(110vh) translateX(0) scale(0.9); opacity: 0; }
-  10% { opacity: 0.9; }
-  100% { transform: translateY(-15vh) translateX(var(--drift-x, 0px)) scale(1.05); opacity: 0; }
-}
-
-/* Pac-Man */
-.floater.pacman {
-  width: 36px; height: 36px;
-  background: conic-gradient(transparent 0deg 38deg,#ffd633 38deg 322deg,transparent 322deg 360deg);
-  border-radius: 50%;
-}
-
-/* Ghost */
-.floater.ghost {
-  width: 32px; height: 36px;
-  background:
-    radial-gradient(circle at 25% 40%, #fff 4px, transparent 5px),
-    radial-gradient(circle at 60% 40%, #fff 4px, transparent 5px),
-    linear-gradient(#60e1ff 22px, transparent 22px),
-    radial-gradient(circle at 16px 34px, #60e1ff 6px, transparent 7px),
-    radial-gradient(circle at 8px 34px, #60e1ff 6px, transparent 7px),
-    radial-gradient(circle at 24px 34px, #60e1ff 6px, transparent 7px);
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-
-/* Controller silhouette */
-.floater.controller {
-  width: 44px; height: 28px;
-  background: #2b2f3a;
-  border-radius: 14px/12px;
-  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.06);
-}
-
-/* Xbox "X" badge */
-.floater.xbadge {
-  width: 28px; height: 28px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #aaffcc, #0c2b1c 70%);
-  color: #0c2b1c;
-}
-.floater.xbadge::before,
-.floater.xbadge::after {
-  content: "";
-  position: absolute;
-  left: 50%; top: 50%;
-  width: 60%; height: 3px;
-  background: #0c2b1c;
-  transform: translate(-50%,-50%) rotate(45deg);
-}
-.floater.xbadge::after {
-  transform: translate(-50%,-50%) rotate(-45deg);
-}
-
-/* Blackhole scene for index */
-.blackhole-scene {
-  position: relative;
-  width: 100%;
-  height: 280px;
-  margin: 10px 0 20px 0;
-  overflow: visible;
-}
-.blackhole {
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  width: 180px; height: 180px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 48% 48%, rgba(0,0,0,0.9) 0%, #000 55%, rgba(0,0,0,0.2) 65%, transparent 70%);
-  box-shadow: 0 0 40px rgba(0,0,0,0.7), 0 0 80px rgba(0,0,0,0.45);
-}
-.blackhole-ring {
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  width: 360px; height: 360px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, rgba(0,255,170,0.06), rgba(0,120,255,0.08), rgba(255,230,0,0.08), rgba(0,255,170,0.06));
-  filter: blur(0.6px) drop-shadow(0 0 14px rgba(0,255,170,0.1));
-  animation: ring-spin 22s linear infinite;
-}
-@keyframes ring-spin {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-/* Starships and trails */
-.starship-layer {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-.starship {
-  position: absolute;
-  width: 22px; height: 12px;
-  background: linear-gradient(90deg, #c8fff0 0%, #7bd5ff 70%, #2e6bff 100%);
-  border-radius: 6px 2px 2px 6px;
-  transform-origin: center;
-  box-shadow: 0 0 10px rgba(123,213,255,0.6);
-}
-.starship::after {
-  content: "";
-  position: absolute;
-  right: 100%; top: 50%;
-  transform: translateY(-50%);
-  width: 22px; height: 4px;
-  background: linear-gradient(90deg, rgba(46,107,255,0.5), rgba(0,255,170,0.0));
-  filter: blur(2px);
-}
-.starship.enemy { background: linear-gradient(90deg, #ffc8c8 0%, #ff8484 70%, #ff2e2e 100%); box-shadow: 0 0 10px rgba(255,132,132,0.6); }
-.starship.enemy::after { background: linear-gradient(90deg, rgba(255,46,46,0.5), rgba(255,0,0,0)); }
-
-/* Starship color variants */
-.starship.blue { background: linear-gradient(90deg, #c8fff0, #7bd5ff, #2e6bff); }
-.starship.red { background: linear-gradient(90deg, #ffc8c8, #ff8484, #ff2e2e); }
-.starship.green { background: linear-gradient(90deg, #c8ffd8, #7bff9e, #0fbf6a); }
-.starship.yellow { background: linear-gradient(90deg, #fff5c8, #ffe27b, #ffbb00); }
-.starship.orange { background: linear-gradient(90deg, #ffd7b0, #ffac6b, #ff6a00); }
-.starship.purple { background: linear-gradient(90deg, #e6c8ff, #c27bff, #7a2eff); }
-
-/* CTA popup */
-.cta-popup {
-  position: fixed;
-  right: 16px; bottom: 16px;
-  z-index: 10000;
+/* Contact page styling */
+.contact-info-container {
   background: rgba(6, 12, 20, 0.9);
-  border: 1px solid rgba(0,255,170,0.35);
-  border-radius: 10px;
-  padding: 14px 16px;
+  border: 1px solid rgba(0,255,170,0.3);
+  border-radius: 12px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 8px 32px rgba(0,255,170,0.15);
+}
+
+.contact-card {
+  background: rgba(12, 24, 40, 0.8);
+  border: 1px solid rgba(0,255,170,0.2);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0,255,170,0.5);
+  box-shadow: 0 8px 24px rgba(0,255,170,0.2);
+}
+
+.contact-icon {
+  font-size: 32px;
+  color: #00ffaa;
+  margin-bottom: 10px;
+}
+
+.contact-card h3 {
+  color: #6ee7ff;
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.contact-card p {
   color: #c8fff0;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.35), 0 0 18px rgba(0,255,170,0.18);
-  display: none;
-}
-.cta-popup.active { display: block; }
-.cta-popup a { color: #00ffaa; text-decoration: underline; }
-.cta-popup .close-btn {
-  position: absolute;
-  top: 6px; right: 8px;
-  cursor: pointer;
+  font-size: 16px;
+  margin: 0;
+  word-break: break-all;
 }
 
-/* HUD gamification badges */
-.hud-badges {
-  position: fixed;
-  right: 12px; top: 64px;
-  z-index: 10;
+.social-section {
+  text-align: center;
+  margin: 30px 0;
+  padding: 20px 0;
+  border-top: 1px solid rgba(0,255,170,0.2);
+  border-bottom: 1px solid rgba(0,255,170,0.2);
+}
+
+.social-section h3 {
+  color: #00ffaa;
+  margin-bottom: 20px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(45deg, rgba(0,255,170,0.1), rgba(110,231,255,0.1));
+  border: 1px solid rgba(0,255,170,0.3);
+  border-radius: 8px;
   color: #c8fff0;
-  font-size: 12px;
-}
-.hud-badges .badge {
-  display: inline-block;
-  margin-left: 8px;
-  padding: 6px 10px;
-  border: 1px solid rgba(0,255,170,0.4);
-  border-radius: 6px;
-  background: rgba(0, 30, 26, 0.35);
-  box-shadow: inset 0 0 12px rgba(0,255,170,0.08), 0 0 12px rgba(0,255,170,0.08);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: bold;
 }
 
-/* Lasers and explosions */
-.laser {
-  position: absolute;
-  width: 16px; height: 2px;
-  background: linear-gradient(90deg, #00ffaa, #6ee7ff);
-  box-shadow: 0 0 10px rgba(0,255,170,0.6);
-  will-change: transform;
-  pointer-events: none;
-}
-.laser.enemy {
-  background: linear-gradient(90deg, #ff4d4d, #ffd1d1);
-  box-shadow: 0 0 10px rgba(255,77,77,0.6);
-}
-.explosion {
-  position: absolute;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff, rgba(255,255,255,0) 70%);
-  box-shadow: 0 0 16px rgba(255,255,255,0.8), 0 0 28px rgba(255,0,0,0.4);
-  animation: explode 500ms ease-out forwards;
-  pointer-events: none;
-}
-@keyframes explode {
-  to { transform: scale(6); opacity: 0; }
+.social-link:hover {
+  background: linear-gradient(45deg, rgba(0,255,170,0.2), rgba(110,231,255,0.2));
+  border-color: #00ffaa;
+  color: #00ffaa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,255,170,0.3);
 }
 
-/* Special lasers */
-.laser.special.blue { height: 3px; background: linear-gradient(90deg, #6ee7ff, #c8fff0); box-shadow: 0 0 16px rgba(110,231,255,0.8); }
-.laser.special.red { height: 3px; background: linear-gradient(90deg, #ff6b6b, #ffd1d1); box-shadow: 0 0 16px rgba(255,107,107,0.8); }
-
-/* Thunder lightning ability */
-.lightning {
-  position: absolute;
-  width: 2px; height: 0;
-  background: linear-gradient(180deg, rgba(173,216,255,1), rgba(173,216,255,0));
-  box-shadow: 0 0 20px rgba(110,231,255,0.8);
-  transform-origin: top center;
-  animation: lightning-strike 280ms ease-out forwards;
-  pointer-events: none;
-}
-@keyframes lightning-strike {
-  0% { height: 0; opacity: 0; }
-  30% { height: var(--len, 200px); opacity: 1; }
-  100% { height: var(--len, 200px); opacity: 0; }
+.social-link i {
+  font-size: 20px;
 }
 
-/* Colorize lasers by shooter color */
-.laser.blue { background: linear-gradient(90deg, #6ee7ff, #a8f0ff); box-shadow: 0 0 10px rgba(110,231,255,0.7); }
-.laser.red { background: linear-gradient(90deg, #ff6b6b, #ffc0c0); box-shadow: 0 0 10px rgba(255,107,107,0.7); }
-.laser.green { background: linear-gradient(90deg, #6bff9a, #c0ffd8); box-shadow: 0 0 10px rgba(107,255,154,0.7); }
-.laser.yellow { background: linear-gradient(90deg, #ffe27b, #fff1b8); box-shadow: 0 0 10px rgba(255,226,123,0.7); }
-.laser.orange { background: linear-gradient(90deg, #ffac6b, #ffd7b0); box-shadow: 0 0 10px rgba(255,172,107,0.7); }
-.laser.purple { background: linear-gradient(90deg, #c27bff, #e6c8ff); box-shadow: 0 0 10px rgba(194,123,255,0.7); }
-.laser.special { filter: brightness(1.2); box-shadow: 0 0 16px rgba(255,255,255,0.8), 0 0 22px currentColor; }
+.availability-info {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(12, 24, 40, 0.5);
+  border-radius: 8px;
+  border: 1px solid rgba(0,255,170,0.1);
+}
+
+.availability-info h3 {
+  color: #00ffaa;
+  margin-bottom: 15px;
+}
+
+.availability-info p {
+  color: #c8fff0;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
